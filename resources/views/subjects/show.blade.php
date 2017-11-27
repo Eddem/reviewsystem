@@ -9,7 +9,6 @@
                 {{ session('status') }}
             </div>
         @endif
-            @foreach($subjects as $subject) 
         <div class="row">
             <div class="span12">
                 <div class="row">
@@ -29,12 +28,18 @@
                         <p>
                             {{$subject->description}}
                         </p>
-                        <p><a class="btn" href="/subjects/{{$subject->id}}">Read More</a></p>
+                        <p>comment text</p>
+                    </div>
+                    <div class="form-group">
+                        <form>
+                        <label for="comment">Comment:</label>
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                        <button type="submit" class="btn btn-danger">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-            @endforeach
     </div>
 
 @endsection

@@ -27,6 +27,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/subjects';
 
+
     /**
      * Create a new controller instance.
      *

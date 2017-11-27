@@ -17,8 +17,12 @@ Route::get('/', function () {
 
 Route::get('subjects', 'subjectsController@index');
 
+Route::get('subjects/{id}','subjectsController@show');
+
+Route::put('subjects/{id}/comment','commentsController@comment');
+
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//
+//Route::get('/home', 'HomeController@index')->name('home');
