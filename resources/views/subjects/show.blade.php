@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="span8">
 
-                        <h4><strong><a href="#">{{$subject->name}}</a></strong></h4>
+                        <h4><strong><a href="#">{{$id->name}}</a></strong></h4>
 
                     </div>
                 </div>
@@ -26,17 +26,32 @@
                     </div>
                     <div class="span10">
                         <p>
-                            {{$subject->description}}
+                            {{$id->description}}
                         </p>
-                        <p>comment text</p>
+                        @foreach($id->comments as $comment)
+                            <a href="/comments/{{ $comment->id }}/edit">{{ $comment->comment }}</a></br>
+                            <p>{{ $comment->user->name }}</p>
+                        @endforeach
+
+
                     </div>
                     <div class="form-group">
-                        <form>
+                        <form method="POST" action="/subjects/{{$id->id}}">
+
+                            {{ csrf_field() }}
+
+
                         <label for="comment">Comment:</label>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
+
+                        <textarea class="form-control" rows="5" name="comment" id="comment">{{old('comment')}}</textarea>
+
                         <button type="submit" class="btn btn-danger">Submit</button>
+
                         </form>
                     </div>
+
+                    {{var_dump($errors)}}
+
                 </div>
             </div>
         </div>

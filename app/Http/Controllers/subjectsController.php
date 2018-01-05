@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Subject;
 use DB;
 
 use App\S;
@@ -20,17 +21,21 @@ class subjectsController extends Controller
 
     public function index(){
 
-        $subjects = DB::table('subjects')->get();
+        $subjects = Subject::all();
 
         return view('subjects.index', compact('subjects'));
     }
 
-    public function show($id)
+    public function show(Subject $id)
     {
 
-        $subject = DB::table('subjects')->find($id);
-        return view('subjects.show', compact('subject'));
+        $id->load('comments.user');
+        
+
+        return view('subjects.show', compact('id'));
 
     }
+
+
 
 }

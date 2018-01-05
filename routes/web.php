@@ -11,18 +11,34 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group(['middleware' => ['web']], function () {
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get('/dashboard', 'adminController@index');
+//    Route::get('/dashboard', 'adminController@show');
+    
+    Route::get('/user/{id}', 'userController@index');
+    
+    Route::get('subjects', 'subjectsController@index');
+
+    Route::get('subjects/{id}','subjectsController@show');
+
+    Route::post('subjects/{id}','commentsController@store');
+
+    Route::get('comments/{id}/edit','commentsController@edit');
+    Route::patch('comments/{id}','commentsController@update');
+
+
+    Route::get('subjects/{user}', 'commentsController@store');
+
+
+    Auth::routes();
 });
 
-Route::get('subjects', 'subjectsController@index');
 
-Route::get('subjects/{id}','subjectsController@show');
-
-Route::put('subjects/{id}/comment','commentsController@comment');
-
-
-
-Auth::routes();
 //
 //Route::get('/home', 'HomeController@index')->name('home');
