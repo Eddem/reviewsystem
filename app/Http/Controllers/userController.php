@@ -13,6 +13,8 @@ class userController extends Controller
     {
 
         $this->middleware('auth');
+
+        $this->middleware('log')->only('index');
         
     }
 

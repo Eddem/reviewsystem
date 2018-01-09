@@ -28,7 +28,67 @@ class adminController extends Controller
         $users->load('comments.subject');
 
 
-        return view('dashboard', compact('users'));
+        return view('admin.dashboard', compact('users'));
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+
+
+        $user = User::find($id);
+
+
+        $user->delete();
+
+        $user->comments->each->delete();
+
+
+        return back();
+    }
+    
+    public function store(Request $request, User $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
+        ]);
+
+        // modal methode
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
+
+        return back();
+    }
+
+    public function edit(User $id)
+    {
+
+        return view('admin.user.edit', compact('id'));
+
+    }
+
+    public function update(Request $request, User $id)
+    {
+
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $id->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
+
+        return back();
+
     }
 
 

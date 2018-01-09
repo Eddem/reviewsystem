@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
+<div class="row">
+    <div class="container">
+        <div class="col-md-8 offset-4">
             <div class="panel panel-default">
                 <div class="panel-body">
 
@@ -14,7 +13,7 @@
                         <form class="form-horizontal" action="{{ route('login') }}" method="post" name="Login_Form" class="form-signin">
                             {{ csrf_field() }}
 
-                            <h3 class="form-signin-heading">Please Sign In</h3>
+                            <h2 class="display-4">Please Sign In</h2>
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email" class="col-md-4 control-label">E-Mail Address</label>

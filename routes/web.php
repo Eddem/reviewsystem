@@ -19,6 +19,11 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::get('/dashboard', 'adminController@index');
+    Route::delete('/user/{id}', 'adminController@delete');
+    Route::get('dashboard/user/{id}/edit', 'adminController@edit');
+    
+    Route::patch('dashboard/user/{id}', 'adminController@update');
+    Route::post('dashboard/user/{id}', 'adminController@store');
 //    Route::get('/dashboard', 'adminController@show');
     
     Route::get('/user/{id}', 'userController@index');

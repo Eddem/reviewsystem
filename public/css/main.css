@@ -44,7 +44,19 @@ html, body {
     text-decoration: none;
     text-transform: uppercase;
 }
-
+.display-4 .nav{
+    color: #FFFFFF;
+}
+.navbar{
+    margin-bottom: 30px;
+}
+.navbar-nav > li{
+    padding-left:10px;
+    padding-right:10px;
+}
+.panel-heading{
+    margin-bottom: 20px;
+}
 .m-b-md {
     margin-bottom: 30px;
 }

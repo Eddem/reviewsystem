@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    Jij bent een, {{$name}}!!
+                    Jij bent {{$name}}!!
                 </div>
             </div>
         </div>

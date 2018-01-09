@@ -21,10 +21,10 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
         });
 
-//        Schema::table('comments', function($table) {
-//        $table->foreign('user_id')->references('id')->on('users');
-//        $table->foreign('subject_id')->references('id')->on('subjects');
-//    });
+        Schema::table('comments', function($table) {
+        $table->foreign('user_id')->references('id')->on('users');
+        $table->foreign('subject_id')->references('id')->on('subjects');
+    });
         
     }
 

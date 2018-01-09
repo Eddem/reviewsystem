@@ -30,7 +30,6 @@ class subjectsController extends Controller
     {
 
         $id->load('comments.user');
-        
 
         return view('subjects.show', compact('id'));
 
