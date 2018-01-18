@@ -2,28 +2,23 @@
 
 @section('content')
         <div class="row">
-            <div class="col-sm-6 col-md-5 col-lg-4 offset-2">
-                <div class="panel-heading"><h2>Onderwerpen</h2></div>
-                @foreach($users as $user)
-                    @foreach($user->comments as $comment)
-                        Dit is de comment {{$comment->comment}} door {{$comment->user->name}} op {{$comment->subject->name}}<br>
-                    @endforeach
-                @endforeach
-            </div>
+            {{--<div class="col-sm-6 col-md-5 col-lg-4 offset-2">--}}
+                {{--<div class="panel-heading"><h2>Onderwerpen</h2></div>--}}
+                {{--@foreach($users as $user)--}}
+                    {{--@foreach($user->comments as $comment)--}}
+                        {{--Dit is de comment {{$comment->comment}} door {{$comment->user->name}} op {{$comment->subject->name}}<br>--}}
+                    {{--@endforeach--}}
+                {{--@endforeach--}}
+            {{--</div>--}}
 
-            <div class="col-sm-6 col-md-5 offset-md-2 col-lg-5 offset-lg-0">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h2>Administrator dashboard</h2>
-                    </div>
+            <div class="col-sm-6 col-md-5 offset-md-2 col-lg-5 offset-lg-3">
+                    <h2>Administrator dashboard</h2>
 
-                    <div class="panel-body">
                         @if (session('status'))
                             <div class="alert alert-success">
                                 {{ session('status') }}
                             </div>
                         @endif
-                    </div>
-                </div>
 
                 <table class="table">
                     <thead>

@@ -17,7 +17,7 @@ class admin
     {
         $user = $request->user();
 
-        if($user && $user->email == '0879436@hr.nl')
+        if($user && $user->email == 'gemeente@gemeente.nl')
         {
             return $next($request);
         }

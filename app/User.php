@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Auth;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -35,6 +37,17 @@ class User extends Authenticatable
     public function subjects()
     {
         return $this->hasMany(Subject::class);
+    }
+    
+    public function isUser($id)
+    {
+        $user = Auth::user()->id;
+        
+        if($user == $id){
+            return true;
+        }else{
+            return false;
+        }
     }
     
 }

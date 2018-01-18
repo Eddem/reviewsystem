@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 
+use Auth;
+
 use Illuminate\Http\Request;
 
 class userController extends Controller
@@ -14,15 +16,40 @@ class userController extends Controller
 
         $this->middleware('auth');
 
-        $this->middleware('log')->only('index');
-        
+
     }
 
-    public function index(User $id){
+    public function index(User $id)
+    {
 
 
-        $user = $id->id;
+        if($id->isUser($id->id) == true){
+            return view('users.index', compact('id'));
+        }else{
+            return back();
+        }
 
-        return view('layouts.app', compact('user'));
     }
+    
+    
+    public function showSubjects (User $id)
+    {
+
+        $id->load('subjects.user');
+
+
+        $user = new User();
+
+        if($user->isUser($id->id) == true) {
+
+            return view('users.index', compact('id'));
+        }else{
+            return back();
+        }
+
+
+    }
+
+    
+    
 }

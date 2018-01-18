@@ -47,7 +47,7 @@ class adminController extends Controller
         return back();
     }
     
-    public function store(Request $request, User $id)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',

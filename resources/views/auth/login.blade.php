@@ -13,9 +13,9 @@
                         <form class="form-horizontal" action="{{ route('login') }}" method="post" name="Login_Form" class="form-signin">
                             {{ csrf_field() }}
 
-                            <h2 class="display-4">Please Sign In</h2>
+                            <h2 class="display-4">Log In</h2>
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : 'vul een e-mail in' }}">
                                 <label for="email" class="col-md-4 control-label">E-Mail Address</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="email" value="{{ old('email') }}" placeholder="Username" required="" autofocus="" />

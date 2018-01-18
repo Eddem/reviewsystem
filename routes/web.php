@@ -27,12 +27,18 @@ Route::group(['middleware' => ['web']], function () {
 //    Route::get('/dashboard', 'adminController@show');
     
     Route::get('/user/{id}', 'userController@index');
-    
-    Route::get('subjects', 'subjectsController@index');
+    Route::get('/user/{id}', 'userController@showSubjects');
 
+    Route::get('subjects', 'subjectsController@index');
+    Route::any('subjects/search', 'subjectsController@search');
     Route::get('subjects/{id}','subjectsController@show');
+    Route::post('user/{id}/subject','subjectsController@store');
+    
+    
+    Route::delete('user/{id}/subject','subjectsController@delete');
 
     Route::post('subjects/{id}','commentsController@store');
+    Route::delete('subjects/{id}','commentsController@delete');
 
     Route::get('comments/{id}/edit','commentsController@edit');
     Route::patch('comments/{id}','commentsController@update');

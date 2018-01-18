@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
 
 class Subject extends Model
 {
+    use Searchable;
 
     public function comments()
     {
@@ -22,6 +25,20 @@ class Subject extends Model
         $comment->user_id = $userId;
         
         return $this->comments()->save($comment);
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        // Customize array...
+
+        return $array;
+    }
+
+    public function searchableAs()
+    {
+        return 'subjects_index';
     }
 
 

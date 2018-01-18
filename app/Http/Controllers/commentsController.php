@@ -11,6 +11,13 @@ use Illuminate\Http\Request;
 
 class commentsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function store(Request $request, Subject $id)
     {
 
@@ -37,10 +44,42 @@ class commentsController extends Controller
 
     }
 
+    public function delete(Request $request)
+    {
+
+        $id = $request->id;
+
+        $comment = Comment::find($id);
+
+        $user = Auth::user()->id;
+
+        if($user == $comment->user_id) {
+            $comment->delete();
+        }
+
+        return back();
+
+    }
+
     public function edit(Comment $id)
     {
 
-        return view('comments.edit', compact('id'));
+        $user = new User();
+
+        if($user->isUser($id->user_id) == true){
+            return view('comments.edit', compact('id'));
+        }else{
+            return back();
+        }
+
+//        $user = Auth::user()->id;
+//
+//
+//        if($user == $id->user_id) {
+//            return view('comments.edit', compact('id'));
+//        }else{
+//            return back();
+//        }
 
     }
 
