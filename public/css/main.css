@@ -57,6 +57,15 @@ html, body {
 .panel-heading{
     margin-bottom: 20px;
 }
+.card{
+    margin-top: 20px;
+}
+.comment{
+    margin-top: 20px;
+}
+.submit-btn{
+    margin-top: 10px;
+}
 .m-b-md {
     margin-bottom: 30px;
 }

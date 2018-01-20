@@ -6,6 +6,7 @@ use App\Subject;
 use DB;
 
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 use Illuminate\Foundation\Auth\User;
@@ -40,6 +41,10 @@ class subjectsController extends Controller
     
     public function store(Request $request, User $id)
     {
+        $this->validate($request, [
+            'name' => 'required|string|min:10|max:30',
+            'description' => 'required|string|min:5|max:250',
+        ]);
 
         $subject = new Subject();
 
@@ -54,14 +59,16 @@ class subjectsController extends Controller
     
     public function search()
     {
+        $subject = new Subject();
 
 
-        $value = Input::get ( 'search' );
+        $value = Input::get('search');
 //
-//        $subject = Subject::search($value)->get();
 
 
-        $subjects = Subject::where('name', 'LIKE', '%'.$value.'%')->get();
+        $subjects = $subject->where('name', 'LIKE', '%'.$value.'%')->get();
+
+
 
 
         return view('subjects.index', compact('subjects'));
@@ -69,7 +76,23 @@ class subjectsController extends Controller
         
     }
 
+    public function filter(Request $request)
+    {
 
+        $value = $request->filter;
+
+        if ($value == 1){
+            $userSubjects = Auth::user()->load('subjects');
+            $results =  $userSubjects->subjects;
+
+            return view('subjects.index', compact('results'));
+        }else{
+            return view('subjects.index', compact('results'));
+        }
+
+
+
+    }
 
 
 

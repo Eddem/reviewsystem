@@ -58,18 +58,21 @@
                         {{ csrf_field() }}
                         <label for="name">Onderwerp titel</label>
 
-                        <input class="form-control" rows="5" name="name" id="description">
+                        <input class="form-control" rows="5" name="name" id="description" required="required">
 
 
                         <label for="comment">Omschrijving</label>
 
-                        <textarea class="form-control" rows="5" name="description" id="description"></textarea>
+                        <textarea class="form-control" rows="5" name="description" id="description" required="required"></textarea>
 
-                        <button type="submit" class="btn btn-danger float-right">Submit</button>
+                        <button type="submit" class="btn btn-danger float-right submit-btn">Submit</button>
 
                     </form>
                 </div>
             </div>
     </div>
 </div>
+
+
+
 @endsection

@@ -42,6 +42,7 @@ class adminController extends Controller
         $user->delete();
 
         $user->comments->each->delete();
+        $user->subjects->each->delete();
 
 
         return back();

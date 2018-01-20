@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'buurt reviewsystem') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -48,17 +48,22 @@
                             </li>
                             @else
                             <li class="nav-item dropdown">
-                                <a href="http://localhost:8000/user" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                <a href="http://localhost:8000/user/{{ Auth::user()->id }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    {{ Auth::user()->name }}
                                 </a>
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        @if (session('status'))
-                                            <a href="/user/{{$user}}">Account
-                                            </a>
-                                        @endif
+                                        <a href="/user/{{ Auth::user()->id }}">Account</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ URl('subjects') }}">Onderwerpen</a>
+                                    </li>
+                                    @if(Auth::user()->id == 1)
+                                    <li>
+                                        <a href="{{ URl('dashboard') }}">Dashboard</a>
+                                    </li>
+                                    @endif
                                     <li>
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();

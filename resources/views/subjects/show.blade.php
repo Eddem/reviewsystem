@@ -8,11 +8,12 @@
         </div>
     @endif
 
+
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-5 col-lg-5 offset-4">
                 <div class="panel-heading">
-                    <h2 class="display-4">{{$id->name}}</h2>
+                    <h2 class="display-4">{{ $id->name}}</h2>
                 </div>
             </div>
             <div class="col-sm-6 col-md-5 col-lg-5 offset-1">
@@ -60,15 +61,15 @@
             </div>
 
 
-            <div class="col-sm-6 col-md-5 col-lg-10 offset-1">
+            <div class="col-sm-6 col-md-5 col-lg-10 offset-1 comment">
                     <div class="form-group">
                         <form method="POST" action="/subjects/{{$id->id}}">
                             {{ csrf_field() }}
                         <label for="comment">Comment:</label>
 
-                        <textarea class="form-control" rows="5" name="comment" id="comment">{{old('comment')}}</textarea>
+                        <textarea class="form-control" rows="5" name="comment" id="comment" required="required">{{old('comment')}}</textarea>
 
-                        <button type="submit" class="btn btn-danger float-right">Submit</button>
+                        <button type="submit" class="btn btn-danger float-right submit-btn">Submit</button>
 
                         </form>
                     </div>

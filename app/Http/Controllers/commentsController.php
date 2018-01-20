@@ -22,7 +22,7 @@ class commentsController extends Controller
     {
 
         $this->validate($request, [
-            'comment' => 'required|min:5|max:150|'
+            'comment' => 'required|string|regex:[A-Za-z1-9 ]|min:5|max:150|'
         ]);
 
         // modal methode
@@ -64,6 +64,7 @@ class commentsController extends Controller
     public function edit(Comment $id)
     {
 
+        
         $user = new User();
 
         if($user->isUser($id->user_id) == true){
@@ -72,19 +73,15 @@ class commentsController extends Controller
             return back();
         }
 
-//        $user = Auth::user()->id;
-//
-//
-//        if($user == $id->user_id) {
-//            return view('comments.edit', compact('id'));
-//        }else{
-//            return back();
-//        }
+
 
     }
 
     public function update(Request $request, Comment $id)
     {
+        $this->validate($request, [
+            'comment' => 'required|string|regex:[A-Za-z1-9 ]|min:5|max:250',
+        ]);
 
         $id->update($request->all());
 

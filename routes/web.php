@@ -30,7 +30,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/user/{id}', 'userController@showSubjects');
 
     Route::get('subjects', 'subjectsController@index');
-    Route::any('subjects/search', 'subjectsController@search');
+    Route::any('subjects', 'subjectsController@search');
+    Route::post('subjects/filter', 'subjectsController@filter');
     Route::get('subjects/{id}','subjectsController@show');
     Route::post('user/{id}/subject','subjectsController@store');
     
