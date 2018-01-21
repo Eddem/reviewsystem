@@ -55,9 +55,13 @@ class commentsController extends Controller
 
         if($user == $comment->user_id) {
             $comment->delete();
+        }elseif(Auth::user()->isUser(1) == true) {
+            $comment->delete();
+        }else{
+            return back();
         }
 
-        return back();
+
 
     }
 
@@ -68,6 +72,8 @@ class commentsController extends Controller
         $user = new User();
 
         if($user->isUser($id->user_id) == true){
+            return view('comments.edit', compact('id'));
+        }elseif($user->isUser(1) == true) {
             return view('comments.edit', compact('id'));
         }else{
             return back();
