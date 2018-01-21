@@ -42,7 +42,7 @@
                 <h4><strong><a href="#">{{$result->name}}</a></strong></h4>
 
                 <div class="span2">
-                    <a href="/subjects/" class="thumbnail">
+                    <a href="{{ url("subjects")}}" class="thumbnail">
                         <img src="http://placehold.it/260x180" alt="">
                     </a>
                 </div>
@@ -51,7 +51,7 @@
                         {{$result->name}}
                     </p>
                     <p>
-                        <a class="btn" href="/subjects/{{$result->id}}">Reageer</a>
+                        <a class="btn" href="{{ url("subjects")}}/{{$result->id}}">Reageer</a>
                     </p>
                 @endforeach
                 @endif
@@ -67,7 +67,7 @@
                 <h4><strong><a href="#">{{$subject->name}}</a></strong></h4>
 
                 <div class="span2">
-                    <a href="/subjects/{{$subject->id}}" class="thumbnail">
+                    <a href="{{ url("subjects")}}/{{$subject->id}}" class="thumbnail">
                         <img src="http://placehold.it/260x180" alt="">
                     </a>
                 </div>
@@ -76,7 +76,7 @@
                         {{$subject->description}}
                     </p>
                     <p>
-                        <a class="btn" href="/subjects/{{$subject->id}}">Reageer</a>
+                        <a class="btn" href="{{ url("subjects")}}/{{$subject->id}}">Reageer</a>
                     </p>
                 @endforeach
                 @endif

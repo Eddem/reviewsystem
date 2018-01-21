@@ -12,7 +12,7 @@
                         </a>
 
                     <div class="form-group">
-                        <form class="form-check-inline" method="POST" action="/comments/{{$id->id}}">
+                        <form class="form-check-inline" method="POST" action="{{ url('comments')}}/{{$id->id}}">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 

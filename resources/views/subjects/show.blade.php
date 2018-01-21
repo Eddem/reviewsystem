@@ -63,7 +63,7 @@
 
             <div class="col-sm-6 col-md-5 col-lg-10 offset-1 comment">
                     <div class="form-group">
-                        <form method="POST" action="/subjects/{{$id->id}}">
+                        <form method="POST" action="{{ url("subjects")}}/{{$id->id}}">
                             {{ csrf_field() }}
                         <label for="comment">Comment:</label>
 

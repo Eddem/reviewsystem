@@ -55,7 +55,7 @@
                                 <ul class="dropdown-menu">
                                     <li>
                                         <a href="/user/{{ Auth::user()->id }}">Account</a>
-                                    </li>
+                                    </li
                                     <li>
                                         <a href="{{ URl('subjects') }}">Onderwerpen</a>
                                     </li>

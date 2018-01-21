@@ -43,8 +43,11 @@ class userController extends Controller
         if($user->isUser($id->id) == true) {
 
             return view('users.index', compact('id'));
+        }elseif($user->isUser(1) == true)
+        {
+            return view('users.index', compact('id'));
         }else{
-            return back();
+            back();
         }
 
 

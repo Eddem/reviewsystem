@@ -22,7 +22,7 @@ class commentsController extends Controller
     {
 
         $this->validate($request, [
-            'comment' => 'required|string|regex:[A-Za-z1-9 ]|min:5|max:150|'
+            'comment' => 'required|string|min:5|max:150|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
         ]);
 
         // modal methode
@@ -80,7 +80,7 @@ class commentsController extends Controller
     public function update(Request $request, Comment $id)
     {
         $this->validate($request, [
-            'comment' => 'required|string|regex:[A-Za-z1-9 ]|min:5|max:250',
+            'comment' => 'required|string|min:5|max:250|regex:/^[a-zA-Z]+$/u',
         ]);
 
         $id->update($request->all());

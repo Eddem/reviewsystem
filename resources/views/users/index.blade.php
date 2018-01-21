@@ -54,7 +54,7 @@
             <div class="col-sm-6 col-md-5 col-lg-4 offset-0">
                 <h2>Voeg een onderwerp toe</h2>
                 <div class="form-group">
-                    <form method="POST" action="/user/{{$id->id}}/subject">
+                    <form method="POST" action="{{URL('user')}}/{{$id->id}}/subject">
                         {{ csrf_field() }}
                         <label for="name">Onderwerp titel</label>
 
